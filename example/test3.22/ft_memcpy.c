@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <hyungyki@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 19:46:41 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/03/22 19:49:21 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/03/22 15:24:19 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/03/22 19:21:31 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -15,27 +15,28 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	unsigned char	*change;
 	unsigned char	*str;
-	size_t			i;
+	size_t	i;
 
 	change = (unsigned char *)dest;
 	str = (unsigned char *)src;
 	if (change == NULL && str == NULL)
-		return (NULL);
+		return NULL;
 	i = 0;
 	while (i < n)
 	{
 		change[i] = str[i];
 		i++;
 	}
-	return (dest);
+	return dest;
 }
-/*
+
 int	main(void)
 {
 	char ex1[] = "honeygyu";
 	char dest1[] = "12345";
 	char *src = dest1 + 1;
 	char dest2[] = "12345";
+	char dest3[] = "";
 
 	printf("메모리 null일 경우\n");
 	printf("%p\n", (char *)ft_memcpy((void *)0, (void *)0, 5 * sizeof(char)));
@@ -52,4 +53,4 @@ int	main(void)
 	printf("%s\n", (char *)ft_memcpy(ex1, dest2, 5 * sizeof(char)));
 	printf("메모리 전체 복사\n");
 	printf("%s\n", (char *)ft_memcpy(ex1, dest2, 5 * sizeof(char) + 1));
-}*/
+}
