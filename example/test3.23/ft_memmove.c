@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hyungyki <hyungyki@student.42gyeongsa      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/22 15:24:19 by hyungyki          #+#    #+#             */
-/*   Updated: 2024/03/24 07:28:13 by hyungyki         ###   ########.fr       */
+/*   Created: 2024/03/24 07:00:19 by hyungyki          #+#    #+#             */
+/*   Updated: 2024/03/24 07:31:34 by hyungyki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*change;
 	unsigned char	*str;
-	size_t	i;
 
 	change = (unsigned char *)dest;
 	str = (unsigned char *)src;
 	if (change == NULL && str == NULL)
-		return NULL;
-	i = 0;
-	while (i < n)
+		return (NULL);
+	if (change < str)
 	{
-		change[i] = str[i];
-		i++;
+		while (n--)
+			*change++ = *str++;
 	}
-	return (change);
+	else
+	{
+		change = change + n - 1; // ??
+		str = str + n; // ??
+		while (n--)
+			*change-- = *str--;
+	}
+	return (change); // dest와 change의 출력이 왜 다른가
 }
 
 int	main(void)
 {
-	char dest1[] = "12345";
-	char *src = dest1 + 1;
-
-//	printf("%s\n", (char *)ft_memcpy(dest1, src, 5 * sizeof(char)));
-	printf("%s\n", (char *)ft_memcpy(src, dest1, 5 * sizeof(char)));
+	char dest[] = "12345";
+	char *src = dest + 1;
+//	printf("%s\n", (char *)ft_memmove(src, dest, 5 * sizeof(char)));
+	printf("%s\n", (char *)ft_memmove(dest, src, 5 * sizeof(char)));
 }
